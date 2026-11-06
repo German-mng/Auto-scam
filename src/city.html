@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Конфигуратор | Oka - AutoScam</title>
+  <link rel="icon" href="img/favicon.png">
+  <style>
+    
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a href="main.html" class="nav-btn">← Назад</a>
+    <div class="nav-logo">AUTOSCAM</div>
+    <button class="nav-btn" onclick="resetConfig()">Сброс</button>
+  </nav>
+
+  <div class="config-container">
+
+
+    <section class="preview-section">
+      <div class="visual-layout">
+
+
+        <div class="preview-zone main-preview" data-label="Кузов">
+          <div class="preview-image-container">
+            <img src="img/redoka.png" alt="Oka" class="preview-img" id="carImage">
+          </div>
+        </div>
+
+
+        <div class="details-layout">
+          <div class="preview-zone sub-preview" data-label="Колёса">
+            <div class="preview-image-container">
+              <img src="img/r12.png" alt="Диски" class="preview-img" id="wheelImage">
+            </div>
+          </div>
+          <div class="preview-zone sub-preview" data-label="Салон">
+            <div class="preview-image-container">
+              <img src="img/stokoka.png" alt="Салон" class="preview-img" id="interiorImage">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Итого -->
+      <div class="config-summary">
+        <div class="car-name-display">Oka</div>
+        <div class="config-tags">
+          <span class="config-tag" id="tagColor">🎨 Красный</span>
+          <span class="config-tag" id="tagWheel">⚙️ R12</span>
+          <span class="config-tag" id="tagInterior">🪑 Ткань</span>
+          <span class="config-tag" id="tagEngine">🔥 Карбюратор</span>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="options-section">
+
+      <!-- Цвет кузова -->
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">🎨</span> Цвет кузова</div>
+        <div class="options-grid" id="colorOptions">
+          <div class="option-card active" data-type="color" data-value="red" data-price="0" data-img="img/redoka.png" data-label="Красный" onclick="selectOption(this)">
+            <div class="option-card-preview color-preview" style="background: #b91c1c"></div>
+            <div class="option-card-name">Красный</div>
+            <div class="option-card-price">База</div>
+          </div>
+          <div class="option-card" data-type="color" data-value="white" data-price="30000" data-img="img/whiteoka.png" data-label="Белый" onclick="selectOption(this)">
+            <div class="option-card-preview color-preview" style="background: #e8e8e8"></div>
+            <div class="option-card-name">Белый</div>
+            <div class="option-card-price">+30 000 ₽</div>
+          </div>
+          <div class="option-card" data-type="color" data-value="blue" data-price="40000" data-img="img/blueoka.png" data-label="Синий" onclick="selectOption(this)">
+            <div class="option-card-preview color-preview" style="background: #0d64d5"></div>
+            <div class="option-card-name">Синий</div>
+            <div class="option-card-price">+40 000 ₽</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Диски -->
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">🛞</span> Колёсные диски</div>
+        <div class="options-grid" id="wheelOptions">
+          <div class="option-card active" data-type="wheel" data-value="r12" data-price="0" data-img="img/r12.png" data-label="R12" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/r12.png" alt="R12">
+            </div>
+            <div class="option-card-name">R12</div>
+            <div class="option-card-price">База</div>
+          </div>
+          <div class="option-card" data-type="wheel" data-value="r14" data-price="60000" data-img="img/r14.png" data-label="R14 карбоновые" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/r14.png" alt="R14">
+            </div>
+            <div class="option-card-name">R14 карбончики</div>
+            <div class="option-card-price">+60 000 ₽</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Салон -->
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">🪑</span> Отделка салона</div>
+        <div class="options-grid" id="interiorOptions">
+          <div class="option-card active" data-type="interior" data-value="stokoka" data-price="0" data-img="img/stokoka.png" data-label="Ткань" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/stokoka.png" alt="Ткань">
+            </div>
+            <div class="option-card-name">Ткань</div>
+            <div class="option-card-price">База</div>
+          </div>
+          <div class="option-card " data-type="interior" data-value="heholoka" data-price="250000" data-img="img/heholoka.png" data-label="Чехлы" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/heholoka.png" alt="Чехлы тифани">
+            </div>
+            <div class="option-card-name">Чехлы тифани</div>
+            <div class="option-card-price">+250 000 ₽</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">⚡</span> Двигатель</div>
+        <div class="options-grid" id="engineOptions">
+          <div class="option-card engine-card active" data-type="engine" data-value="сток" data-price="0" data-label="Карбюратор" onclick="selectOption(this)">
+            <div class="engine-icon">🔧</div>
+            <div class="option-card-name">Карбюратор</div>
+            <div class="option-card-price">База</div>
+            <div class="option-card-spec">33 л.с. | 50 Н·м</div>
+          </div>
+          <div class="option-card engine-card" data-type="engine" data-value="Восмиклоп" data-price="250000" data-label="Восмиклоп" onclick="selectOption(this)">
+            <div class="engine-icon">🚀</div>
+            <div class="option-card-name">Восмиклоп</div>
+            <div class="option-card-price">+250 000 ₽</div>
+            <div class="option-card-spec">90 л.с. | 145 Н·м</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Доп опции -->
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">✨</span> Дополнительные опции</div>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>🌡️</span><span>Печка</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="15000">
+          <span class="checkbox-price">15 000 ₽</span>
+        </label>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>🔊</span><span>Могнитола</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="18000">
+          <span class="checkbox-price">18 000 ₽</span>
+        </label>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>📹</span><span>Видерегистратор</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="19000">
+          <span class="checkbox-price">19 000 ₽</span>
+        </label>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>🔥</span><span>НЕ гнилой кузов</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="45000">
+          <span class="checkbox-price">45 000 ₽</span>
+        </label>
+      </div>
+
+      <!-- Итого -->
+      <div class="summary-panel">
+        <div class="summary-row"><span>Базовая стоимость:</span><span>150 000 ₽</span></div>
+        <div class="summary-row"><span>Выбранные опции:</span><span id="optionsPrice">0 ₽</span></div>
+        <div class="summary-row total"><span>Итого:</span><span id="finalPriceDisplay">150 000 ₽</span></div>
+        <button class="btn-order" onclick="orderCar()">🚀 Оформить заказ</button>
+      </div>
+
+    </section>
+  </div>
+</body>
+<link rel="stylesheet" href="car.css">
+<script src="city.js"></script>
+</html>

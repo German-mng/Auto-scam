@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Конфигуратор | Porsche Panamera - AutoScam</title>
+  <link rel="icon" href="img/favicon.png">
+  <style>
+    
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a href="main.html" class="nav-btn">← Назад</a>
+    <div class="nav-logo">AUTOSCAM</div>
+    <button class="nav-btn" onclick="resetConfig()">Сброс</button>
+  </nav>
+
+  <div class="config-container">
+
+
+    <section class="preview-section">
+      <div class="visual-layout">
+
+
+        <div class="preview-zone main-preview" data-label="Кузов">
+          <div class="preview-image-container">
+            <img src="img/redsport.png" alt="Porsche Panamera" class="preview-img" id="carImage">
+          </div>
+        </div>
+
+
+        <div class="details-layout">
+          <div class="preview-zone sub-preview" data-label="Колёса">
+            <div class="preview-image-container">
+              <img src="img/r18.png" alt="Диски" class="preview-img" id="wheelImage">
+            </div>
+          </div>
+          <div class="preview-zone sub-preview" data-label="Салон">
+            <div class="preview-image-container">
+              <img src="img/sportkh.png" alt="Салон" class="preview-img" id="interiorImage">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Итого -->
+      <div class="config-summary">
+        <div class="car-name-display">Porsche Panamera</div>
+        <div class="config-tags">
+          <span class="config-tag" id="tagColor">🎨 Красный</span>
+          <span class="config-tag" id="tagWheel">⚙️ R18</span>
+          <span class="config-tag" id="tagInterior">🪑 Кожа</span>
+          <span class="config-tag" id="tagEngine">🔥 2.9L V6</span>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="options-section">
+
+      <!-- Цвет кузова -->
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">🎨</span> Цвет кузова</div>
+        <div class="options-grid" id="colorOptions">
+          <div class="option-card active" data-type="color" data-value="red" data-price="0" data-img="img/redsport.png" data-label="Красный" onclick="selectOption(this)">
+            <div class="option-card-preview color-preview" style="background: #b91c1c"></div>
+            <div class="option-card-name">Красный</div>
+            <div class="option-card-price">База</div>
+          </div>
+          <div class="option-card " data-type="color" data-value="black" data-price="120000" data-img="img/blacksport.png" data-label="Чёрный" onclick="selectOption(this)">
+            <div class="option-card-preview color-preview" style="background: #1a1a2e"></div>
+            <div class="option-card-name">Чёрный</div>
+            <div class="option-card-price">+120 000 ₽</div>
+          </div>
+          <div class="option-card" data-type="color" data-value="white" data-price="90000" data-img="img/whitesport.png" data-label="Белый" onclick="selectOption(this)">
+            <div class="option-card-preview color-preview" style="background: #e8e8e8"></div>
+            <div class="option-card-name">Белый</div>
+            <div class="option-card-price">+90 000 ₽</div>
+          </div>
+          <div class="option-card" data-type="color" data-value="blue" data-price="150000" data-img="img/bluesport.png" data-label="Сапфир" onclick="selectOption(this)">
+            <div class="option-card-preview color-preview" style="background: #1e3a5f"></div>
+            <div class="option-card-name">Сапфир</div>
+            <div class="option-card-price">+150 000 ₽</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Диски -->
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">🛞</span> Колёсные диски</div>
+        <div class="options-grid" id="wheelOptions">
+          <div class="option-card active" data-type="wheel" data-value="r18" data-price="0" data-img="img/r18.png" data-label="R18 Литые" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/r18.png" alt="R18">
+            </div>
+            <div class="option-card-name">R18 Panamera Design</div>
+            <div class="option-card-price">База</div>
+          </div>
+          <div class="option-card" data-type="wheel" data-value="r19" data-price="180000" data-img="img/r19.png" data-label="R19 S" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/r19.png" alt="R19">
+            </div>
+            <div class="option-card-name">R19 S Sport</div>
+            <div class="option-card-price">+180 000 ₽</div>
+          </div>
+          <div class="option-card" data-type="wheel" data-value="r20" data-price="350000" data-img="img/r20.png" data-label="R20 Turbo S" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/r20.png" alt="R20">
+            </div>
+            <div class="option-card-name">R20 Turbo S</div>
+            <div class="option-card-price">+350 000 ₽</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Салон -->
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">🪑</span> Отделка салона</div>
+        <div class="options-grid" id="interiorOptions">
+          <div class="option-card active" data-type="interior" data-value="sportkh" data-price="0" data-img="img/sportkh.png" data-label="Эко-Кожа" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/sportkh.png" alt="Эко-Кожа">
+            </div>
+            <div class="option-card-name">Эко-Кожа</div>
+            <div class="option-card-price">База</div>
+          </div>
+          <div class="option-card " data-type="interior" data-value="sportking" data-price="250000" data-img="img/sportking.png" data-label="Кожа" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/sportking.png" alt="Кожа">
+            </div>
+            <div class="option-card-name">Кожа</div>
+            <div class="option-card-price">+250 000 ₽</div>
+          </div>
+          <div class="option-card" data-type="interior" data-value="sporttk" data-price="420000" data-img="img/sporttk.png" data-label="Алькантара" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/sporttk.png" alt="Алькантара">
+            </div>
+            <div class="option-card-name">Алькантара</div>
+            <div class="option-card-price">+420 000 ₽</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">⚡</span> Двигатель</div>
+        <div class="options-grid" id="engineOptions">
+          <div class="option-card engine-card active" data-type="engine" data-value="v6" data-price="0" data-label="2.9L V6 Turbo" onclick="selectOption(this)">
+            <div class="engine-icon">🔧</div>
+            <div class="option-card-name">2.9L V6 Biturbo</div>
+            <div class="option-card-price">База</div>
+            <div class="option-card-spec">330 л.с. | 450 Н·м</div>
+          </div>
+          <div class="option-card engine-card" data-type="engine" data-value="v6plus" data-price="850000" data-label="2.9L V6 Turbo+" onclick="selectOption(this)">
+            <div class="engine-icon">🔥</div>
+            <div class="option-card-name">2.9L V6 Turbo+</div>
+            <div class="option-card-price">+850 000 ₽</div>
+            <div class="option-card-spec">440 л.с. | 550 Н·м</div>
+          </div>
+          <div class="option-card engine-card" data-type="engine" data-value="v8" data-price="1900000" data-label="4.0L V8 Turbo" onclick="selectOption(this)">
+            <div class="engine-icon">🚀</div>
+            <div class="option-card-name">4.0L V8 Biturbo</div>
+            <div class="option-card-price">+1 900 000 ₽</div>
+            <div class="option-card-spec">500 л.с. | 650 Н·м</div>
+          </div>
+          <div class="option-card engine-card" data-type="engine" data-value="v8turboS" data-price="3200000" data-label="4.0L V8 Turbo S" onclick="selectOption(this)">
+            <div class="engine-icon">💎</div>
+            <div class="option-card-name">4.0L V8 Turbo S</div>
+            <div class="option-card-price">+3 200 000 ₽</div>
+            <div class="option-card-spec">630 л.с. | 820 Н·м</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Доп опции -->
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">✨</span> Дополнительные опции</div>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>🌡️</span><span>4-зонный климат</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="65000">
+          <span class="checkbox-price">65 000 ₽</span>
+        </label>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>🔊</span><span>Burmester 3D Surround</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="280000">
+          <span class="checkbox-price">280 000 ₽</span>
+        </label>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>📹</span><span>Ночное видение</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="195000">
+          <span class="checkbox-price">195 000 ₽</span>
+        </label>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>🌙</span><span>Панорамная крыша</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="145000">
+          <span class="checkbox-price">145 000 ₽</span>
+        </label>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>🤖</span><span>InnoDrive (Автопилот)</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="450000">
+          <span class="checkbox-price">450 000 ₽</span>
+        </label>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>💨</span><span>Спорт выхлоп</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="220000">
+          <span class="checkbox-price">220 000 ₽</span>
+        </label>
+      </div>
+
+      <!-- Итого -->
+      <div class="summary-panel">
+        <div class="summary-row"><span>Базовая стоимость:</span><span>11 200 000 ₽</span></div>
+        <div class="summary-row"><span>Выбранные опции:</span><span id="optionsPrice">0 ₽</span></div>
+        <div class="summary-row total"><span>Итого:</span><span id="finalPriceDisplay">11 200 000 ₽</span></div>
+        <button class="btn-order" onclick="orderCar()">🚀 Оформить заказ</button>
+      </div>
+
+    </section>
+  </div>
+</body>
+<link rel="stylesheet" href="car.css">
+<script src="sport.js"></script>
+</html>

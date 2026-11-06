@@ -1,0 +1,183 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: #0b0f19;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    .top-nav {
+      position: fixed; top: 0; left: 0; right: 0; height: 64px;
+      background: rgba(11, 15, 25, 0.95); backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-btn {
+      background: transparent; border: 1px solid rgba(255,255,255,0.25);
+      color: #cbd5e1; padding: 8px 16px; border-radius: 8px; cursor: pointer;
+      font-size: 0.9rem; transition: all 0.25s; text-decoration: none;
+    }
+    .nav-btn:hover { background: #3b82f6; border-color: #3b82f6; color: #fff; }
+    .nav-logo {
+      font-size: 1.3rem; font-weight: 700;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .config-container {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      margin-top: 64px;
+      height: calc(100vh - 64px);
+      overflow: hidden;
+    }
+
+    /* === ЛЕВАЯ ЧАСТЬ: ПРЕВЬЮ === */
+    .preview-section {
+      background: linear-gradient(180deg, #0f172a 0%, #0b0f19 100%);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      overflow-y: auto;
+    }
+
+    .visual-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      flex: 1;
+    }
+
+    .main-preview {
+      flex: 2.5;
+      min-height: 350px;
+    }
+
+    .details-layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      min-height: 200px;
+    }
+
+    .preview-zone {
+      background: #151b2b;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .preview-zone:hover { border-color: rgba(59,130,246,0.3); }
+    .preview-zone::before {
+      content: attr(data-label);
+      position: absolute; top: 12px; left: 14px;
+      font-size: 0.8rem; font-weight: 700; color: #94a3b8;
+      text-transform: uppercase; letter-spacing: 1px; z-index: 5;
+      background: rgba(11, 15, 25, 0.7); padding: 4px 8px; border-radius: 6px;
+    }
+
+    .preview-image-container {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center; padding: 2rem;
+    }
+    .preview-img {
+      max-width: 100%; max-height: 100%; object-fit: contain;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.5));
+      transition: opacity 0.2s ease;
+    }
+    .preview-img.switching { opacity: 0.5; }
+
+    .config-summary {
+      background: rgba(11, 15, 25, 0.9);
+      padding: 1.5rem; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.05);
+      text-align: center; backdrop-filter: blur(5px);
+    }
+    .car-name-display { font-size: 1.5rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.3rem; }
+    .config-tags { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0.8rem; }
+    .config-tag { background: rgba(59,130,246,0.15); color: #60a5fa; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+    .car-price-display { font-size: 1.8rem; color: #3b82f6; font-weight: 800; }
+
+    /* === ПРАВАЯ ЧАСТЬ: ПАНЕЛЬ ОПЦИЙ === */
+    .options-section {
+      background: #0b0f19;
+      padding: 2rem;
+      overflow-y: auto;
+      border-left: 1px solid rgba(255,255,255,0.06);
+    }
+    .options-section::-webkit-scrollbar { width: 6px; }
+    .options-section::-webkit-scrollbar-track { background: transparent; }
+    .options-section::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+
+    .option-group { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .option-group:last-child { border-bottom: none; }
+    .option-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: #f1f5f9; display: flex; align-items: center; gap: 0.5rem; }
+    .option-icon { color: #60a5fa; }
+
+    .options-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+    .option-card {
+      background: #151b2b; border: 2px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 0.8rem; cursor: pointer;
+      transition: all 0.2s; text-align: center; position: relative;
+    }
+    .option-card:hover { background: #1e293b; border-color: rgba(59,130,246,0.4); }
+    .option-card.active { border-color: #3b82f6; background: rgba(59,130,246,0.1); }
+    .option-card::after {
+      content: '✓'; position: absolute; top: 8px; right: 8px;
+      width: 20px; height: 20px; background: #3b82f6; border-radius: 50%;
+      font-size: 12px; color: white; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: scale(0.5); transition: all 0.2s;
+    }
+    .option-card.active::after { opacity: 1; transform: scale(1); }
+
+    /* Цветовые кружочки (для кузова) */
+    .option-card-preview.color-preview {
+      width: 50px; height: 50px; border-radius: 50%;
+      margin: 0 auto 0.6rem;
+    }
+
+    /* Превью в карточке (для дисков и салона) */
+    .option-card-preview {
+      height: 50px; background: #0f172a; border-radius: 8px;
+      margin-bottom: 0.6rem; display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .option-card-preview img { max-width: 80%; max-height: 80%; object-fit: contain; }
+
+    .option-card-name { font-weight: 600; font-size: 0.85rem; color: #e2e8f0; margin-bottom: 0.2rem; }
+    .option-card-price { color: #60a5fa; font-size: 0.8rem; font-weight: 600; }
+    .option-card-spec { color: #94a3b8; font-size: 0.75rem; margin-top: 0.2rem; }
+
+    /* Карточка двигателя (без картинки) */
+    .option-card.engine-card { padding: 1rem 0.8rem; }
+    .option-card.engine-card .engine-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+
+    /* Доп опции */
+    .checkbox-item {
+      display: flex; align-items: center; justify-content: space-between; padding: 0.8rem;
+      background: #151b2b; border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;
+    }
+    .checkbox-item:hover { background: #1e293b; }
+    .checkbox-item input { width: 18px; height: 18px; accent-color: #3b82f6; cursor: pointer; }
+    .checkbox-label { display: flex; align-items: center; gap: 0.8rem; cursor: pointer; flex: 1; }
+    .checkbox-price { color: #60a5fa; font-size: 0.85rem; }
+
+    .summary-panel { margin-top: 2rem; }
+    .summary-row { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; color: #94a3b8; }
+    .summary-row.total { font-size: 1.5rem; font-weight: 700; color: #3b82f6; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: 1rem; }
+    .btn-order {
+      width: 100%; padding: 1rem; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff;
+      border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 700; cursor: pointer; margin-bottom: 0.5rem;
+      transition: transform 0.2s;
+    }
+    .btn-order:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(59,130,246,0.4); }
+
+    @media (max-width: 1024px) {
+      .config-container { grid-template-columns: 1fr; height: auto; }
+      .preview-section { min-height: 600px; }
+      .details-layout { min-height: 250px; }
+    }

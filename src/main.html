@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoScam | Конфигуратор авто</title>
+  <link rel="icon" href="img/favicon.png">
+</head>
+<body>
+
+
+  <div class="auth-modal-overlay" id="authModal">
+    <div class="auth-modal">
+      <div class="auth-header">
+        <h2>🚗 AutoScam</h2>
+        <p>Собери автомобиль своей мечты</p>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" onclick="switchTab('login')">Вход</button>
+        <button class="auth-tab" onclick="switchTab('register')">Регистрация</button>
+      </div>
+
+      <form class="auth-form active" id="loginForm">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="loginEmail" placeholder="your@email.com" required>
+          <div class="error-message" id="loginEmailError">Неверный email</div>
+        </div>
+        <div class="form-group">
+          <label>Пароль</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" required>
+          <div class="error-message" id="loginPasswordError">Неверный пароль</div>
+        </div>
+        <button type="submit" class="btn-auth">Войти</button>
+      </form>
+
+      <form class="auth-form" id="registerForm">
+        <div class="form-group">
+          <label>Имя</label>
+          <input type="text" id="registerName" placeholder="Иван Иванов" required>
+          <div class="error-message" id="registerNameError">Введите имя (мин. 2 символа)</div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="registerEmail" placeholder="your@email.com" required>
+          <div class="error-message" id="registerEmailError">Неверный email</div>
+        </div>
+        <div class="form-group">
+          <label>Пароль</label>
+          <input type="password" id="registerPassword" placeholder="••••••••" required>
+          <div class="error-message" id="registerPasswordError">Пароль должен быть не менее 6 символов</div>
+        </div>
+        <div class="form-group">
+          <label>Подтвердите пароль</label>
+          <input type="password" id="registerConfirm" placeholder="••••••••" required>
+          <div class="error-message" id="registerConfirmError">Пароли не совпадают</div>
+        </div>
+        <button type="submit" class="btn-auth">Зарегистрироваться</button>
+      </form>
+    </div>
+  </div>
+
+
+  <nav class="top-nav">
+    <div class="nav-logo">AUTOSCAM</div>
+    
+
+    <div class="nav-right-actions">
+      <a href="info.html" class="nav-btn">ℹ️ О нас</a>
+      
+      <div id="authButtons">
+        <button class="nav-btn" onclick="showAuthModal()">🔐 Войти</button>
+      </div>
+      
+      <div id="userProfile" style="display: none;">
+        <div class="user-profile" onclick="logout()">
+          <div class="user-avatar" id="userAvatar">И</div>
+          <span class="user-name" id="userName">Иван</span>
+          <button class="nav-btn btn-logout">✕</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <header class="banner">
+    <h1>Собери авто своей мечты</h1>
+    <p>Выбери базовую модель, настрой цвет, диски, салон и двигатели. Полный контроль над каждой деталью.</p>
+  </header>
+
+
+  <main class="cards-section">
+    <h2 class="section-title">Выбери платформу для кастомизации</h2>
+    <div class="cards-grid">
+      <article class="car-card">
+        <div class="car-img-placeholder">🏎️</div>
+        <div class="car-info">
+          <h3>Спортивный поршец</h3>
+          <p>Аэродинамика, мощный мотор и агрессивный характер</p>
+          <button class="btn-select" onclick="selectCar('sport.html')">Настроить</button>
+        </div>
+      </article>
+
+      <article class="car-card">
+        <div class="car-img-placeholder">🚙</div>
+        <div class="car-info">
+          <h3>Внедорожник</h3>
+          <p>Проходимость, комфорт и статус на любой дороге</p>
+          <button class="btn-select" onclick="selectCar('derevnya.html')">Настроить</button>
+        </div>
+      </article>
+      <article class="car-card">
+        <div class="car-img-placeholder">🚘</div>
+        <div class="car-info">
+          <h3>Городской вариантик</h3>
+          <p>Экономичность, технологии и ежедневный комфорт</p>
+          <button class="btn-select" onclick="selectCar('city.html')">Настроить</button>
+        </div>
+      </article>
+    </div>
+  </main>
+</body>
+<link rel="stylesheet" href="main.css">
+<script type="module" src="database.js"></script>
+<script type="module" src="main.js"></script>
+</html>

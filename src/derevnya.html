@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Конфигуратор | BMW - AutoScam</title>
+  <link rel="icon" href="img/favicon.png">
+  <style>
+    
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a href="main.html" class="nav-btn">← Назад</a>
+    <div class="nav-logo">AUTOSCAM</div>
+    <button class="nav-btn" onclick="resetConfig()">Сброс</button>
+  </nav>
+
+  <div class="config-container">
+
+
+    <section class="preview-section">
+      <div class="visual-layout">
+
+
+        <div class="preview-zone main-preview" data-label="Кузов">
+          <div class="preview-image-container">
+            <img src="img/blackbmw.png" alt="Oka" class="preview-img" id="carImage">
+          </div>
+        </div>
+
+
+        <div class="details-layout">
+          <div class="preview-zone sub-preview" data-label="Колёса">
+            <div class="preview-image-container">
+              <img src="img/r21.png" alt="Диски" class="preview-img" id="wheelImage">
+            </div>
+          </div>
+          <div class="preview-zone sub-preview" data-label="Салон">
+            <div class="preview-image-container">
+              <img src="img/blacksalonbmw.png" alt="Салон" class="preview-img" id="interiorImage">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Итого -->
+      <div class="config-summary">
+        <div class="car-name-display">BMW XM</div>
+        <div class="config-tags">
+          <span class="config-tag" id="tagColor">🎨 Черный</span>
+          <span class="config-tag" id="tagWheel">⚙️ R21</span>
+          <span class="config-tag" id="tagInterior">🪑 Ткань</span>
+          <span class="config-tag" id="tagEngine">🔥 Карбюратор</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="options-section">
+
+      <!-- Цвет кузова -->
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">🎨</span> Цвет кузова</div>
+        <div class="options-grid" id="colorOptions">
+          <div class="option-card active" data-type="color" data-value="black" data-price="0" data-img="img/blackbmw.png" data-label="Черный" onclick="selectOption(this)">
+            <div class="option-card-preview color-preview" style="background: #000000"></div>
+            <div class="option-card-name">Черный</div>
+            <div class="option-card-price">База</div>
+          </div>
+          <div class="option-card" data-type="color" data-value="white" data-price="300000" data-img="img/greybmw.png" data-label="Белый" onclick="selectOption(this)">
+            <div class="option-card-preview color-preview" style="background: #676666"></div>
+            <div class="option-card-name">Серый</div>
+            <div class="option-card-price">+300 000 ₽</div>
+          </div>
+          <div class="option-card" data-type="color" data-value="blue" data-price="450000" data-img="img/bluebmw.png" data-label="Голубой" onclick="selectOption(this)">
+            <div class="option-card-preview color-preview" style="background: #0766e2"></div>
+            <div class="option-card-name">Голубой</div>
+            <div class="option-card-price">+450 000 ₽</div>
+          </div>
+          <div class="option-card" data-type="color" data-value="blue" data-price="1000000" data-img="img/limitedbmw.png" data-label="Изумрудный" onclick="selectOption(this)">
+            <div class="option-card-preview color-preview" style="background: #07e26a"></div>
+            <div class="option-card-name">Limited</div>
+            <div class="option-card-price">+1 000 000 ₽</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Диски -->
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">🛞</span> Колёсные диски</div>
+        <div class="options-grid" id="wheelOptions">
+          <div class="option-card active" data-type="wheel" data-value="r21" data-price="0" data-img="img/r21.png" data-label="R21" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/r21.png" alt="R21">
+            </div>
+            <div class="option-card-name">R21</div>
+            <div class="option-card-price">База</div>
+          </div>
+          <div class="option-card" data-type="wheel" data-value="r22" data-price="250000" data-img="img/r22.png" data-label="R22" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/r22.png" alt="R22">
+            </div>
+            <div class="option-card-name">R22 </div>
+            <div class="option-card-price">+250 000 ₽</div>
+          </div>
+          <div class="option-card" data-type="wheel" data-value="r23" data-price="450000" data-img="img/r23.png" data-label="R23 карбоновые" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/r23.png" alt="R23">
+            </div>
+            <div class="option-card-name">R23 карбончики</div>
+            <div class="option-card-price">+450 000 ₽</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Салон -->
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">🪑</span> Отделка салона</div>
+        <div class="options-grid" id="interiorOptions">
+          <div class="option-card active" data-type="interior" data-value="black/red" data-price="0" data-img="img/blacksalonbmw.png" data-label="Черная кожа с красной строчкой" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/blacksalonbmw.png" alt="Черная кожа с красной строчкой">
+            </div>
+            <div class="option-card-name">Черный/красный</div>
+            <div class="option-card-price">База</div>
+          </div>
+          <div class="option-card " data-type="interior" data-value="white" data-price="400000" data-img="img/whitesalonbmw.png" data-label="Белая кожа" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/whitesalonbmw.png" alt="Белая кожа>">
+            </div>
+            <div class="option-card-name">Белая кожа</div>
+            <div class="option-card-price">+400 000 ₽</div>
+          </div>
+          <div class="option-card " data-type="interior" data-value="tifani" data-price="400000" data-img="img/limitedsalonbmw.png" data-label="Тифани" onclick="selectOption(this)">
+            <div class="option-card-preview">
+              <img src="img/limitedsalonbmw.png" alt="Тифани">
+            </div>
+            <div class="option-card-name">Тифани</div>
+            <div class="option-card-price">+700 000 ₽</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">⚡</span> Двигатель</div>
+        <div class="options-grid" id="engineOptions">
+          <div class="option-card engine-card active" data-type="engine" data-value="3L V6+ e-motor" data-price="0" data-label="3L V6+ e-motor" onclick="selectOption(this)">
+            <div class="engine-icon">🔧</div>
+            <div class="option-card-name">3L V6+ e-motor</div>
+            <div class="option-card-price">База</div>
+            <div class="option-card-spec">476 л.с. | 610 Н·м</div>
+          </div>
+          <div class="option-card engine-card" data-type="engine" data-value="4.4L V6+ e-motor" data-price="2250000" data-label="4.4L V6+ e-motor" onclick="selectOption(this)">
+            <div class="engine-icon">🚀</div>
+            <div class="option-card-name">4.4L V6+ e-motor</div>
+            <div class="option-card-price">+2 250 000 ₽</div>
+            <div class="option-card-spec">550 л.с. | 700 Н·м</div>
+          </div>
+          <div class="option-card engine-card" data-type="engine" data-value="4.4L V8+ e-motor" data-price="2750000" data-label="4.4L V8+ e-motor" onclick="selectOption(this)">
+            <div class="engine-icon">🔥</div>
+            <div class="option-card-name">4.4L V8+ e-motor</div>
+            <div class="option-card-price">+2 750 000 ₽</div>
+            <div class="option-card-spec">650 л.с. | 850 Н·м</div>
+          </div>
+          <div class="option-card engine-card" data-type="engine" data-value="4.4L V8 TwinTurbo + e-motor" data-price="3500000" data-label="4.4L V8 TwinTurbo + e-motor" onclick="selectOption(this)">
+            <div class="engine-icon">💎</div>
+            <div class="option-card-name">4.4L V8 TwinTurbo + e-motor</div>
+            <div class="option-card-price">+3 500 000 ₽</div>
+            <div class="option-card-spec">750 л.с. | 1000 Н·м</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Доп опции -->
+      <div class="option-group">
+        <div class="option-title"><span class="option-icon">✨</span> Дополнительные опции</div>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>🌡️</span><span>4-зонный климат</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="65000">
+          <span class="checkbox-price">65 000 ₽</span>
+        </label>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>🔊</span><span>Burmester 3D Surround</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="280000">
+          <span class="checkbox-price">280 000 ₽</span>
+        </label>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>📹</span><span>Ночное видение</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="195000">
+          <span class="checkbox-price">195 000 ₽</span>
+        </label>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>🌙</span><span>Звездное небо</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="345000">
+          <span class="checkbox-price">345 000 ₽</span>
+        </label>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>🤖</span><span>InnoDrive (Автопилот)</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="450000">
+          <span class="checkbox-price">450 000 ₽</span>
+        </label>
+        <label class="checkbox-item">
+          <div class="checkbox-label"><span>💨</span><span>Спорт выхлоп</span></div>
+          <input type="checkbox" onchange="updatePrice()" data-price="220000">
+          <span class="checkbox-price">220 000 ₽</span>
+        </label>
+      </div>
+
+      <!-- Итого -->
+      <div class="summary-panel">
+        <div class="summary-row"><span>Базовая стоимость:</span><span>20 00 000 ₽</span></div>
+        <div class="summary-row"><span>Выбранные опции:</span><span id="optionsPrice">0 ₽</span></div>
+        <div class="summary-row total"><span>Итого:</span><span id="finalPriceDisplay">150 000 ₽</span></div>
+        <button class="btn-order" onclick="orderCar()">🚀 Оформить заказ</button>
+      </div>
+
+    </section>
+  </div>
+</body>
+<link rel="stylesheet" href="car.css">
+<script src="derevnya.js"></script>
+</html>
